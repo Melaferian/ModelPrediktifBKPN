@@ -4,6 +4,7 @@ import numpy as np
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 from datetime import date
+from geopy.exc import GeocoderTimedOut, GeocoderUnavailable
 
 # Load the trained model
 model = joblib.load('rf_best.joblib')
@@ -25,7 +26,7 @@ kpknl_coordinates = {
 
 # Function to get coordinates from an address
 def get_coordinates(address):
-    geolocator = Nominatim(user_agent="geoapiExercises")
+    geolocator = Nominatim(user_agent="modelprediktifbkpn_app")
     location = geolocator.geocode(address)
     if location:
         return (location.latitude, location.longitude)
